@@ -14,3 +14,19 @@ class DocModel(BaseModel):
     file_path: str
     file_name: str
     file_type: str
+
+    class Config:
+        arbitrary_types_allowed = True
+        json_encoders = {
+            ObjectId: str
+        }
+        populate_by_name = True
+        json_schema_extra = {
+            "example": {
+                "title": "Test",
+                "description": "Test",
+                "file_path": "Test",
+                "file_name": "Test",
+                "file_type": "Test",
+            }
+        }
