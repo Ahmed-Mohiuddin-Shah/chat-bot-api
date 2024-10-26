@@ -1,7 +1,7 @@
 import os
 
 from fastapi import APIRouter,  Request
-from app.cruds.doc_cruds import add_doc
+from app.cruds.doc_cruds import add_doc, get_pdf_names
 
 router = APIRouter()
 
@@ -35,6 +35,37 @@ async def add_pdf(request: Request):
             "data": None,
             "msg": "Add PDF"
         }
+    except Exception as e:
+        print(e)
+        return {
+            "status": False,
+            "data": None,
+            "msg": str(e)
+        }
+    
+    return {
+        "status": False,
+        "data": None,
+        "msg": "Add PDF"
+    }
+
+@router.get("/get-docs")
+async def get_docs():
+    try:
+        pdfs = await get_pdf_names()
+
+        print(pdfs)
+        return {
+            "status": True,
+            "data": pdfs,
+            "msg": "Get PDFs"
+        }
+
+        # return {
+        #     "status": True,
+        #     "data": pdfs,
+        #     "msg": "Get PDFs"
+        # }
     except Exception as e:
         print(e)
         return {

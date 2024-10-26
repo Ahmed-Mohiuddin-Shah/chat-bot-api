@@ -29,7 +29,17 @@ async def add_doc(title: str):
 
     return new_doc
 
-async def get_docs():
+async def get_pdf_names():
     db = await get_db()
     docs = db["docs"].find()
-    return docs
+
+    pdfs = []
+    async for docet in docs:
+        pdfs.append(
+            {
+                "id": str(docet["_id"]),
+                "title": docet["title"],
+            }
+        )
+
+    return pdfs
