@@ -1,0 +1,12 @@
+.env
+
+cnics/
+number_plates/
+
+*.jpg
+
+__pycache__
+
+.vscode
+
+*.log
