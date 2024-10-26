@@ -2,12 +2,14 @@ from fastapi import APIRouter,  Request
 
 router = APIRouter()
 
-@router.get("/manage/add-doc")
+@router.post("/manage/add-doc")
 async def add_pdf(request: Request):
 
-    # Get the PDF file from the request
-    # Save the PDF file to the disk
-    # Return the success message
+    request_body = await request.json()
+
+    print(request_body)
+
+    
 
     return {
         "status": True,

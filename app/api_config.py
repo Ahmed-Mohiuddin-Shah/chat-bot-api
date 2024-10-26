@@ -2,11 +2,15 @@ from fastapi import FastAPI, Body, Depends, APIRouter
 from starlette.middleware.cors import CORSMiddleware
 from decouple import config
 
+from bson import ObjectId
+from pymongo import ReturnDocument
+
 from app.auth.fastapi_auth_middlewares import JwtAuthMiddleware
 
 from app.utils.custom_cors_middleware import CustomCORSMiddleware
 
 from app.routes.auth_router import router as auth_router
+from app.routes.manage_router import router as manage_router
 
 api_router = APIRouter()
 
@@ -25,6 +29,7 @@ def get_application() -> FastAPI:
     )
 
     application.include_router(auth_router, prefix="/api/auth", tags=["auth"])
+    application.include_router(manage_router, prefix="/api/manage", tags=["manage"])
 
     # application.add_middleware(
     #     JwtAuthMiddleware,
