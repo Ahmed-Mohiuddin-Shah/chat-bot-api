@@ -19,6 +19,8 @@ passlib = {extras = ["bcrypt"], version = "^1.7.4"}
 python-multipart = "^0.0.9"
 pyjwt = "^2.8.0"
 cachetools = "^5.4.0"
+pydantic = "^2.9.2"
+pymongo = "^4.10.1"
 
 
 [build-system]
